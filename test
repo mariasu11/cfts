@@ -1,0 +1,37 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Creates a test IAM role.",
+    "Metadata": {
+        "VersionDate": {
+            "Value": "20180718"
+        },
+        "Identifier": {
+            "Value": "blank-role.json"
+        }
+    },
+    "Resources": {
+        "EnvTestRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName": "e2e-test-role",
+                "Path": "/",
+                "Policies": [],
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "ec2.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
